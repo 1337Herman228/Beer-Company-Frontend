@@ -13,34 +13,38 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import { removeSubNavbar, showDrinks, showCompany, fullTitlesAndLinks } from '../../slices/basicSlice';
-import gsap from "gsap";
+// import { removeSubNavbar, showDrinks, showCompany, fullTitlesAndLinks } from '../../slices/basicSlice';
+import { 
+  showSubNavbar,
+  hideSubNavbar,
+  hideSubNavbarLVL2,
+  fullTitlesAndLinks,
+} from '../../slices/basicSlice';
+
+
+import gsap, { distribute } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-// import drinksJSON from './drinks.json'
-
-
 const NavScrollExample = ()=> {
-  
-  // const drinksArray = drinksJSON.drinks;
-  // // console.log(drinksArray)
 
-  const {subNavbar, subNavActive} = useSelector(state => state.basic);
+  const {
+    subNavbar, 
+    subNavIsActive,
+    prevSubNavbar
+  } = useSelector(state => state.basic);
+
   const dispatch = useDispatch();
 
-  let timeoutId;
-  const handleMouseEnter = (func) => {
-      clearTimeout(timeoutId);
-      dispatch(func());
-      dispatch(fullTitlesAndLinks());
-  };
-  
-  
-  const handleMouseLeave = (func) => {
-    clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-           dispatch(func());
-      }, 200);
+  const handleClick = (type) => {
+        if (!subNavIsActive) {
+          dispatch(showSubNavbar(type));
+          dispatch(fullTitlesAndLinks());
+          dispatch(hideSubNavbarLVL2());
+        } else if (prevSubNavbar !== subNavbar) {
+          dispatch(showSubNavbar(type));
+          dispatch(fullTitlesAndLinks());
+          dispatch(hideSubNavbarLVL2());
+        }
   };
 
   return (
@@ -67,15 +71,15 @@ const NavScrollExample = ()=> {
 
             <Nav.Link
                 className="dropdown"
-                onMouseEnter={() => handleMouseEnter(showDrinks)}
-                onMouseLeave={() => handleMouseLeave(removeSubNavbar)}>
+                onClick={() => handleClick('drinks')}
+                >
               <span className= {`nav-text ${subNavbar==='drinks'? 'active' : ''}`}  >Напитки</span>
               </Nav.Link>
 
               <Nav.Link
                 className="dropdown"
-                onMouseEnter={() => handleMouseEnter(showCompany)}
-                onMouseLeave={() => handleMouseLeave(removeSubNavbar)}>
+                onClick={() => handleClick('company')}
+                >
               <span className= {`nav-text ${subNavbar==='company'? 'active' : ''}`}  >Компания</span>
               </Nav.Link>
 
@@ -100,8 +104,6 @@ const NavScrollExample = ()=> {
       </Container>
 
             {subNavbar!=='none' ? <SubNavbar/> : null}
-            {/* {subNavbar!=='none' && destroying === false ? <SubNavbar/> : null} */}
-            {/* <SubNavbar/> */}
 
     </Navbar>
 

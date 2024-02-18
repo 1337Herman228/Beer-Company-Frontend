@@ -10,7 +10,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Dropdown } from 'react-bootstrap';
 import { useRef, useEffect } from 'react';
 
-import { activateSubNav, removeSubNavbar, disactivateSubNav, activateSubNavLVL2, disactivateSubNavLVL2, showSubNavbarLVL2, removeSubNavbarLVL2 } from '../../slices/basicSlice';
+// import { activateSubNav, removeSubNavbar, disactivateSubNav, activateSubNavLVL2, disactivateSubNavLVL2, showSubNavbarLVL2, removeSubNavbarLVL2 } from '../../slices/basicSlice';
+import { 
+    showSubNavbar,
+    showSubNavbarLVL2,
+    fullTitlesAndLinks,
+  } from '../../slices/basicSlice';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import gsap from "gsap";
@@ -22,65 +28,81 @@ const SubNavbar = ()=> {
 
     const subNavbarRef = useRef(null);
 
-    const {titlesAndLinks, subNavbarLVL2, SubNavbar, subNavLVL2Active, prevSubNavbar} = useSelector(state => state.basic);
+    const {
+        titlesAndLinks,
+        subNavbarLVL2, 
+        subNavLVL2IsActive,
+        prevSubNavbarLVL2
+    } = useSelector(state => state.basic);
+
     const dispatch = useDispatch();
 
-    let timeoutId;
-    const handleMouseEnter = () => {
-        clearTimeout(timeoutId);
-            dispatch(activateSubNav());
-            // dispatch(showDrinks());
-      };
     
-      const handleMouseLeave = () => {
-        if(subNavLVL2Active){
-            return
-        }
-        else{
-            remove()
-            clearTimeout(timeoutId);
-                // если при задержке в 50мс происходит изменения SubNavbar на другое значение,то нужно либо сразу убрать савнавбар, либо отменить операцию removeSubNavbar
-                    timeoutId = setTimeout(() => {
-                        if(prevSubNavbar!=SubNavbar ){
-                        dispatch(disactivateSubNav());
-                        dispatch(removeSubNavbar());
 
-                            // timeoutId = setTimeout(() => {
-                            //    if(!subNavLVL2Active){
-                            //     dispatch(disactivateSubNavLVL2());
-                            //     dispatch(removeSubNavbarLVL2());
-                            //    }
-                            // }, 100);
+    // let timeoutId;
+    // const handleMouseEnter = () => {
+    //     clearTimeout(timeoutId);
+    //         dispatch(activateSubNav());
+    //         // dispatch(showDrinks());
+    //   };
+    
+    //   const handleMouseLeave = () => {
+    //     if(subNavLVL2Active){
+    //         return
+    //     }
+    //     else{
+    //         remove()
+    //         clearTimeout(timeoutId);
+    //             // если при задержке в 50мс происходит изменения SubNavbar на другое значение,то нужно либо сразу убрать савнавбар, либо отменить операцию removeSubNavbar
+    //                 timeoutId = setTimeout(() => {
+    //                     if(prevSubNavbar!=SubNavbar ){
+    //                     dispatch(disactivateSubNav());
+    //                     dispatch(removeSubNavbar());
+
+    //                         // timeoutId = setTimeout(() => {
+    //                         //    if(!subNavLVL2Active){
+    //                         //     dispatch(disactivateSubNavLVL2());
+    //                         //     dispatch(removeSubNavbarLVL2());
+    //                         //    }
+    //                         // }, 100);
                         
 
-                    }
-                    else{
-                        timeoutId = setTimeout(() => {
-                            dispatch(disactivateSubNav());
-                            dispatch(removeSubNavbar());
-                            dispatch(disactivateSubNavLVL2());
-                            dispatch(removeSubNavbarLVL2());
-                        }, 200);
-                    }
-                    }, 50);
+    //                 }
+    //                 else{
+    //                     timeoutId = setTimeout(() => {
+    //                         dispatch(disactivateSubNav());
+    //                         dispatch(removeSubNavbar());
+    //                         dispatch(disactivateSubNavLVL2());
+    //                         dispatch(removeSubNavbarLVL2());
+    //                     }, 200);
+    //                 }
+    //                 }, 50);
+    //     }
+    //   };
+
+    //   let timeoutId2;
+    //   const showSubNavLVL2 = (title)=>{
+    //     clearTimeout(timeoutId2);
+    //     timeoutId = setTimeout(() => {
+    //         dispatch(showSubNavbarLVL2(title));
+    //     }, 200);
+    //   }
+    //   const hideSubNavLVL2 = ()=>{
+    //     clearTimeout(timeoutId2);
+    //     timeoutId = setTimeout(() => {
+    //         dispatch(removeSubNavbarLVL2());
+    //     }, 200);
+    //   }
+
+    const handleClick = (type) => {
+        if (!subNavLVL2IsActive) {
+          dispatch(showSubNavbarLVL2(type));
+          dispatch(fullTitlesAndLinks());
+        } else if (prevSubNavbarLVL2 !== subNavbarLVL2) {
+          dispatch(showSubNavbarLVL2(type));
+          dispatch(fullTitlesAndLinks());
         }
-      };
-
-      let timeoutId2;
-      const showSubNavLVL2 = (title)=>{
-        clearTimeout(timeoutId2);
-        timeoutId = setTimeout(() => {
-            dispatch(showSubNavbarLVL2(title));
-        }, 200);
-      }
-      const hideSubNavLVL2 = ()=>{
-        clearTimeout(timeoutId2);
-        timeoutId = setTimeout(() => {
-            dispatch(removeSubNavbarLVL2());
-        }, 200);
-      }
-
-
+  };
 
     useGSAP(() => {
         gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0, ease: 'power3.in'});
@@ -104,8 +126,8 @@ const SubNavbar = ()=> {
                 expand="lg" 
                 className="subnavbar">
             <Container  
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave} 
+                // onMouseEnter={handleMouseEnter}
+                // onMouseLeave={handleMouseLeave} 
                 fluid>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -117,8 +139,8 @@ const SubNavbar = ()=> {
                     {titlesAndLinks.map((el) => {
                         return(
                         <Nav.Link
-                            onMouseEnter={() => showSubNavLVL2(el.title)}
-                            onMouseLeave={() => hideSubNavLVL2()}
+                            onClick={() => handleClick(el.title)}
+                            // onMouseLeave={() => hideSubNavLVL2()}
                             key = {el.title}
                             style={{color: 'white', fontWeight:500, marginRight:5}} 
                             href={el.link}>

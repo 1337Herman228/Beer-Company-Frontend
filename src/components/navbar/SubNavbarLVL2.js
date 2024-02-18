@@ -5,31 +5,35 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import { activateSubNav, disactivateSubNav, removeSubNavbar, activateSubNavLVL2, removeSubNavbarLVL2, disactivateSubNavLVL2 } from '../../slices/basicSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { 
+    showSubNavbar,
+    hideSubNavbar,
+    fullTitlesAndLinks,
+  } from '../../slices/basicSlice';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const SubNavbarLVL2 = ()=> {
 
-    let timeoutId;
-    const handleMouseEnter = () => {
-            dispatch(activateSubNav());
-            dispatch(activateSubNavLVL2());
-            // dispatch(showDrinks());
-      };
-    const handleMouseLeave = () => {
-    clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            dispatch(disactivateSubNavLVL2());
-            dispatch(removeSubNavbarLVL2());
-            dispatch(disactivateSubNav());
-            if(!subNavActive){
-                dispatch(removeSubNavbar());
-            }
-        }, 200);
-    };
+    // let timeoutId;
+    // const handleMouseEnter = () => {
+    //         dispatch(activateSubNav());
+    //         dispatch(activateSubNavLVL2());
+    //         // dispatch(showDrinks());
+    //   };
+    // const handleMouseLeave = () => {
+    // clearTimeout(timeoutId);
+    //     timeoutId = setTimeout(() => {
+    //         dispatch(disactivateSubNavLVL2());
+    //         dispatch(removeSubNavbarLVL2());
+    //         dispatch(disactivateSubNav());
+    //         if(!subNavActive){
+    //             dispatch(removeSubNavbar());
+    //         }
+    //     }, 200);
+    // };
 
     const {titlesAndLinks, subNavbarLVL2,subNavActive, SubNavbar, prevSubNavbar} = useSelector(state => state.basic);
     const dispatch = useDispatch();
@@ -40,8 +44,8 @@ const SubNavbarLVL2 = ()=> {
                 expand="lg" 
                 className="subnavbar-lvl2">
             <Container  
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave} 
+                // onMouseEnter={handleMouseEnter}
+                // onMouseLeave={handleMouseLeave} 
                 fluid>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">

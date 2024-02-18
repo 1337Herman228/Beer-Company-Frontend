@@ -6,6 +6,10 @@
     font-size: 18px;
     font-weight: 500;
 }
+/* .nav-text:hover{
+    color:rgb(244, 171, 92);
+    transition: color 0.25s ease;
+} */
 .active{
     color:rgb(244, 171, 92);
     transition: color 0.25s ease;
