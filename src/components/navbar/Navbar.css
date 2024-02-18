@@ -1,0 +1,63 @@
+.navbar{
+    background-color: rgb(255, 255, 255);
+    max-height: 70px;
+}
+.nav-text{
+    font-size: 18px;
+    font-weight: 500;
+}
+.active{
+    color:rgb(244, 171, 92);
+    transition: color 0.25s ease;
+}
+
+.snow-button{
+    width:41px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.snowflake{
+    margin-left:-10px;
+    margin-top:-4px;
+}
+.logo{
+    margin-left: 20px;
+    width: 60px;
+    height: 60px;
+    margin-top: -10px;
+}
+
+.subnavbar{
+    margin-top: 1px;
+    font-size: 14px;
+    background-color: rgb(76, 76, 76);
+    height: 40px;
+}
+
+.subnavbar-lvl2{
+    /* margin-top: 1px; */
+    font-size: 14px;
+    background-color: rgb(217, 213, 213);
+    height: 100px;
+}
+.subnavbar-lvl2-img{
+    width: 100px;
+    height: 70px
+}
+
+.subnav-text{
+    color: white;
+    transition: color 0.25s ease;
+}
+.subnav-text:hover{
+    color: rgb(244, 171, 92);
+    transition: color 0.25s ease;
+}
+
+.dropdown{
+    height: 40px;
+    margin-top: -20px;
+    /* font-size: 22px; */
+}

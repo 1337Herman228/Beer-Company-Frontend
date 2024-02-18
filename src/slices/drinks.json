@@ -1,0 +1,12 @@
+{
+   "drinks":[
+    {"title":"Пиво","link":"#action-1"},
+    {"title":"Hard Lemonade","link":"#action-2"},
+    {"title":"Квас","link":"#action-3"},
+    {"title":"Сидр","link":"#action-4"},
+    {"title":"Коктейли","link":"#action-5"},
+    {"title":"Вода","link":"#action-6"},
+    {"title":"Газированные напитки","link":"#action-7"},
+    {"title":"Энергетики","link":"#action-8"}
+   ]
+}
