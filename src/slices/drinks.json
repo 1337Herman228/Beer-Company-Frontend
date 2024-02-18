@@ -1,12 +1,57 @@
 {
    "drinks":[
-    {"title":"Пиво","link":"#action-1"},
-    {"title":"Hard Lemonade","link":"#action-2"},
-    {"title":"Квас","link":"#action-3"},
-    {"title":"Сидр","link":"#action-4"},
-    {"title":"Коктейли","link":"#action-5"},
-    {"title":"Вода","link":"#action-6"},
-    {"title":"Газированные напитки","link":"#action-7"},
-    {"title":"Энергетики","link":"#action-8"}
+    {"title":"Пиво","link":"none" ,"img":[
+      {"src":"https://lidskae.by/assets/img/menu/beer/1.png", "mini":"true","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/beer/2.png", "mini":"true","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/beer/3.png", "mini":"true","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/beer/4.png", "mini":"true","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/beer/5.png", "mini":"true","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/beer/6.png", "mini":"true","alt":"beer","link":"#action-2"}
+    ]},
+    {"title":"Hard Lemonade","link":"none","img":[
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/HL_EXOTIC_GLASS.7ffe7685fc8f844fbd44fd060449b64b.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/HL_LEMON_GLASS.7ffe7685fc8f844fbd44fd060449b64b.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/MANGO_LEMONADE_1.7ffe7685fc8f844fbd44fd060449b64b.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/LIDSKAE_hard_cherry_1.7ffe7685fc8f844fbd44fd060449b64b.png","alt":"beer","link":"#action-2"}
+      ]},
+    {"title":"Квас","link":"none","img":[
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/crazy-crush-so-vkusom-karameli.77b109479c49a7a5560412ca6bdddca2.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/kvas-hlebnyj.77b109479c49a7a5560412ca6bdddca2.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/kvas-temnyj.77b109479c49a7a5560412ca6bdddca2.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/zim_kvas_2022.77b109479c49a7a5560412ca6bdddca2.png","alt":"beer","link":"#action-2"}
+    ]},
+    {"title":"Сидр","link":"none","img":[
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/FIZZ-NEW23.2ca4b5d781e708252245b45949233ff0.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/FIZZ-NEW_APPLE_PET.2ca4b5d781e708252245b45949233ff0.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/FIZZ-NEW_CHERRY_PET.2ca4b5d781e708252245b45949233ff0.png","alt":"beer","link":"#action-2"}
+
+    ]},
+    {"title":"Коктейли","link":"none","img":[
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/VIVA_COSTA_MARGARITA_01_.bbabd56b5dee96384e95c9e0b1dfaf9f.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/VIVA_COSTA_MOJITO_01_.bbabd56b5dee96384e95c9e0b1dfaf9f.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/VIVA_COSTA_CUBA_LIBRE_02_.bbabd56b5dee96384e95c9e0b1dfaf9f.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/VIVA_COSTA_coco.bbabd56b5dee96384e95c9e0b1dfaf9f.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/VIVA_COSTA_gr.bbabd56b5dee96384e95c9e0b1dfaf9f.png","alt":"beer","link":"#action-2"}
+
+    ]},
+    {"title":"Напитки с соком","link":"none","img":[
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/aura-pineapple-coconut.23144b229e54444cdc309275ecec0537.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/AURA_granat.19acc8e86aecfe1549e166f661b3c5de.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/vse-vitaminy-apelsin.23144b229e54444cdc309275ecec0537.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/vse-vitaminy-vishnya.23144b229e54444cdc309275ecec0537.png","alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/components/phpthumbof/cache/vse-vitaminy-persik.23144b229e54444cdc309275ecec0537.png","alt":"beer","link":"#action-2"}
+    ]},
+    {"title":"Газированные напитки","link":"none","img":[
+      {"src":"https://lidskae.by/assets/img/menu/drinks/1.jpg", "mini":"true" ,"alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/drinks/2.jpg","mini":"true" ,"alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/drinks/3.jpg","mini":"true" ,"alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/drinks/chiilz.png","mini":"true" ,"alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/menu/drinks/MtDew.jpg","mini":"true" ,"alt":"beer","link":"#action-2"}
+    ]},
+    {"title":"Энергетики","link":"none","img":[
+      {"src":"https://lidskae.by/assets/img/catalog/energetiki/dynamit.jpg", "mini":"true" ,"alt":"beer","link":"#action-2"},
+      {"src":"https://lidskae.by/assets/img/catalog/energetiki/LOGO_BOOST_UP-01.png","mini":"true" ,"alt":"beer","link":"#action-2"}
+     
+    ]}
    ]
 }

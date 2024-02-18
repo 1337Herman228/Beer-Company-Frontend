@@ -24,6 +24,7 @@ const initialState = {
     subNavLVL2IsActive: false,
 
     titlesAndLinks: [],
+    images:[],
 }
 
 const basicSlice = createSlice({
@@ -51,9 +52,6 @@ const basicSlice = createSlice({
                 state.subNavbarLVL2 = 'none'
                 state.subNavLVL2IsActive = false
             }
-
-
-
         },
         hideSubNavbar: (state)=>{
             state.prevSubNavbar = state.subNavbar
@@ -65,8 +63,6 @@ const basicSlice = createSlice({
             state.subNavbarLVL2 = 'none'
             state.subNavLVL2IsActive = false
         },
-
-
 
         fullTitlesAndLinks: (state) => { 
             switch(state.subNavbar){

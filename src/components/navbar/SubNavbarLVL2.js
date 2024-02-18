@@ -17,32 +17,19 @@ import { useGSAP } from "@gsap/react";
 
 const SubNavbarLVL2 = ()=> {
 
-    // let timeoutId;
-    // const handleMouseEnter = () => {
-    //         dispatch(activateSubNav());
-    //         dispatch(activateSubNavLVL2());
-    //         // dispatch(showDrinks());
-    //   };
-    // const handleMouseLeave = () => {
-    // clearTimeout(timeoutId);
-    //     timeoutId = setTimeout(() => {
-    //         dispatch(disactivateSubNavLVL2());
-    //         dispatch(removeSubNavbarLVL2());
-    //         dispatch(disactivateSubNav());
-    //         if(!subNavActive){
-    //             dispatch(removeSubNavbar());
-    //         }
-    //     }, 200);
-    // };
+    const {titlesAndLinks,subNavbarLVL2} = useSelector(state => state.basic);
 
-    const {titlesAndLinks, subNavbarLVL2,subNavActive, SubNavbar, prevSubNavbar} = useSelector(state => state.basic);
+    const img = titlesAndLinks.filter(el => el.title === subNavbarLVL2)
+    const imgArr = img[0].img
+
     const dispatch = useDispatch();
 
     return(
-        <div>
-            <Navbar
-                expand="lg" 
-                className="subnavbar-lvl2">
+        <div style={{height:200}}>
+            <Navbar 
+            className="subnavbar-lvl2"
+                // expand="lg" 
+                >
             <Container  
                 // onMouseEnter={handleMouseEnter}
                 // onMouseLeave={handleMouseLeave} 
@@ -51,24 +38,24 @@ const SubNavbarLVL2 = ()=> {
                 <Navbar.Collapse id="navbarScroll">
                 <Nav
                     className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
+                    // style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    {titlesAndLinks.map((el) => {
+                    {imgArr.map((el,i) => {
                         return(
-                        <Nav.Link
-                            key = {el.title}
-                            style={{color: 'white', fontWeight:500, marginRight:5}} 
-                            href={el.link}>
-                                <img className='subnavbar-lvl2-img' src='https://lidskae.by/assets/img/menu/drinks/chiilz.png' />
-                        </Nav.Link>
+                            <Nav.Link
+                                key = {i}
+                                style={{color: 'white', fontWeight:500, marginRight:5}} 
+                                href={el.link}>
+                                    <img className={`subnavbar-lvl2-img ${el.mini=='true'? 'mini' : ''}`} src={el.src} />
+                            </Nav.Link>
                         )
                     })}
                 </Nav>
                 
                 </Navbar.Collapse>
             </Container>
-            </Navbar>
+            </Navbar>   
         </div>
     )
 }

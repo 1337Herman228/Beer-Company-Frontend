@@ -12,6 +12,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useRef, useEffect } from 'react';
 
 // import { removeSubNavbar, showDrinks, showCompany, fullTitlesAndLinks } from '../../slices/basicSlice';
 import { 
@@ -27,6 +28,8 @@ import { useGSAP } from "@gsap/react";
 
 const NavScrollExample = ()=> {
 
+  const subNavbarRef = useRef(null);
+
   const {
     subNavbar, 
     subNavIsActive,
@@ -37,19 +40,27 @@ const NavScrollExample = ()=> {
 
   const handleClick = (type) => {
         if (!subNavIsActive) {
-          dispatch(showSubNavbar(type));
-          dispatch(fullTitlesAndLinks());
-          dispatch(hideSubNavbarLVL2());
+
+            dispatch(showSubNavbar(type));
+            dispatch(fullTitlesAndLinks());
+            dispatch(hideSubNavbarLVL2());
+            gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0,x: -100, ease: 'power3.in'});
+
+          
         } else if (prevSubNavbar !== subNavbar) {
-          dispatch(showSubNavbar(type));
-          dispatch(fullTitlesAndLinks());
-          dispatch(hideSubNavbarLVL2());
+
+          gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0, x: -100, ease: 'power3.in'});
+            dispatch(showSubNavbar(type));
+            dispatch(fullTitlesAndLinks());
+            dispatch(hideSubNavbarLVL2());
+          
         }
   };
 
+
   return (
     <>
-    <Navbar style={{display: 'block'}} fixed="top" expand="lg" className="navbar">
+    <Navbar style={{display: 'block'}} fixed="top" expand="lg" className="nav-bar">
       <Container fluid>
         <Navbar.Brand href="#"><Logo className="logo"/></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -60,31 +71,19 @@ const NavScrollExample = ()=> {
             navbarScroll
           >
 
-            {/* <NavDropdown
-                className="dropdown"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                title="Напитки"
-                id="navbarScrollingDropdown">
-            </NavDropdown> */}
-
-
-            <Nav.Link
+            <button
                 className="dropdown"
                 onClick={() => handleClick('drinks')}
                 >
               <span className= {`nav-text ${subNavbar==='drinks'? 'active' : ''}`}  >Напитки</span>
-              </Nav.Link>
+              </button>
 
-              <Nav.Link
+              <button
                 className="dropdown"
                 onClick={() => handleClick('company')}
                 >
               <span className= {`nav-text ${subNavbar==='company'? 'active' : ''}`}  >Компания</span>
-              </Nav.Link>
-
-
-           
+              </button>
           </Nav>
 {/* 
           <Button variant="outline-light" className='snow-button'>
@@ -103,7 +102,9 @@ const NavScrollExample = ()=> {
         </Navbar.Collapse>
       </Container>
 
-            {subNavbar!=='none' ? <SubNavbar/> : null}
+        <div ref = {subNavbarRef}>
+          {subNavbar!=='none' ? <SubNavbar /> : null}
+        </div>
 
     </Navbar>
 
