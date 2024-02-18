@@ -7,13 +7,8 @@ const drinksArray = drinksJSON.drinks;
 const companyArray = companyJSON.company;
 
 const initialState = {
-    // prevSubNavbarLVL2: 'none',
-    // subNavbarLVL2: 'none',
-    // subNavLVL2Active: false,
 
-    // prevSubNavbar: 'none',
-    // subNavbar: 'none',
-    // subNavActive: false,
+    isSnow: true,
 
     prevSubNavbar: 'none',
     subNavbar:'none',
@@ -31,6 +26,13 @@ const basicSlice = createSlice({
     name: 'basic',  
     initialState,
     reducers: {
+
+        activateSnow: (state)=>{
+            state.isSnow = true
+        },
+        disactivateSnow: (state)=>{
+            state.isSnow = false
+        },
 
         showSubNavbar: (state, action)=>{
             state.prevSubNavbar = state.subNavbar
@@ -71,37 +73,6 @@ const basicSlice = createSlice({
                 case 'default': return
             }
         },
-
-        // removeSubNavbar: state => {if(!state.subNavActive) state.subNavbar ='none'},
-        // removeSubNavbarLVL2: state => {if(!state.subNavLVL2Active) state.subNavbarLVL2 ='none'},
-
-        // showDrinks: state => {
-        //     state.prevSubNavbar = state.subNavbar
-        //     state.subNavbar ='drinks'},
-        // showCompany: state => {
-        //     state.prevSubNavbar = state.subNavbar
-        //     state.subNavbar ='company'},
-
-        // activateSubNav: state => { state.subNavActive = true},
-        // disactivateSubNav: state => { state.subNavActive = false},
-
-        // showSubNavbarLVL2: (state, action) => {
-        //     state.prevSubNavbarLVL2 = state.subNavbarLVL2
-        //     state.subNavbarLVL2 = action.payload
-        // },
-
-        // activateSubNavLVL2: state => { state.subNavLVL2Active = true},
-        // disactivateSubNavLVL2: state => { state.subNavLVL2Active = false},
-
-
-        // fullTitlesAndLinks: (state) => { 
-        //     switch(state.subNavbar){
-        //         case 'drinks': {state.titlesAndLinks = drinksArray; break}
-        //         case 'company': {state.titlesAndLinks = companyArray; break}
-        //         case 'default': return
-        //     }
-        // },
-
     }}
 )
 
@@ -114,16 +85,8 @@ export const {
     hideSubNavbar,
     fullTitlesAndLinks,
     showSubNavbarLVL2,
-    hideSubNavbarLVL2
+    hideSubNavbarLVL2,
+    activateSnow,
+    disactivateSnow,
 
-    // showDrinks,
-    // removeSubNavbar,
-    // removeSubNavbarLVL2,
-    // activateSubNav,
-    // disactivateSubNav,
-    // showCompany,
-    // fullTitlesAndLinks,
-    // showSubNavbarLVL2,
-    // activateSubNavLVL2,
-    // disactivateSubNavLVL2
 } = actions 

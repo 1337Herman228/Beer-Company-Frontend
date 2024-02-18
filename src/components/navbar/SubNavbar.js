@@ -43,12 +43,12 @@ const SubNavbar = ()=> {
         if (!subNavLVL2IsActive) {
           dispatch(showSubNavbarLVL2(type));
           dispatch(fullTitlesAndLinks());
-          gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0,x: -100, ease: 'power3.in'});
+          gsap.from(subNavbarRef.current, {duration: 0.3, alpha: 0,x: -100, ease: 'power3.in'});
 
         } else if (prevSubNavbarLVL2 !== subNavbarLVL2) {
           dispatch(showSubNavbarLVL2(type));
           dispatch(fullTitlesAndLinks());
-          gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0,x: -100, ease: 'power3.in'});
+          gsap.from(subNavbarRef.current, {duration: 0.3, alpha: 0,x: -100, ease: 'power3.in'});
 
         }
   };

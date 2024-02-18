@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+/* .snow{
+  position: relative;
+  z-index: 9999;
+} */
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +41,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* width and height of the entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* width and height of the thumb */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s;
+}
+
+/* on hover, the thumb becomes lighter */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* the track - the part of the scrollbar where the thumb doesn't run */
+::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 6px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 }

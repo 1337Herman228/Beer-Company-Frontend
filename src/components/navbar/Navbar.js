@@ -11,20 +11,20 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 
-// import { removeSubNavbar, showDrinks, showCompany, fullTitlesAndLinks } from '../../slices/basicSlice';
+
 import { 
   showSubNavbar,
-  hideSubNavbar,
+  activateSnow,
+  disactivateSnow,
   hideSubNavbarLVL2,
   fullTitlesAndLinks,
 } from '../../slices/basicSlice';
 
+import gsap from "gsap";
 
-import gsap, { distribute } from "gsap";
-import { useGSAP } from "@gsap/react";
+import Snowflake from '../snow/snowflake';
 
 const NavScrollExample = ()=> {
 
@@ -33,7 +33,8 @@ const NavScrollExample = ()=> {
   const {
     subNavbar, 
     subNavIsActive,
-    prevSubNavbar
+    prevSubNavbar,
+    isSnow
   } = useSelector(state => state.basic);
 
   const dispatch = useDispatch();
@@ -44,18 +45,26 @@ const NavScrollExample = ()=> {
             dispatch(showSubNavbar(type));
             dispatch(fullTitlesAndLinks());
             dispatch(hideSubNavbarLVL2());
-            gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0,x: -100, ease: 'power3.in'});
+            gsap.from(subNavbarRef.current, {duration: 0.3, alpha: 0,x: -100, ease: 'power3.in'});
 
           
         } else if (prevSubNavbar !== subNavbar) {
 
-          gsap.from(subNavbarRef.current, {duration: 0.2, alpha: 0, x: -100, ease: 'power3.in'});
+          gsap.from(subNavbarRef.current, {duration: 0.3, alpha: 0, x: -100, ease: 'power3.in'});
             dispatch(showSubNavbar(type));
             dispatch(fullTitlesAndLinks());
             dispatch(hideSubNavbarLVL2());
           
         }
   };
+
+  const onChangeSnow = () => {
+    if (!isSnow) {
+      dispatch(activateSnow());
+    } else {
+      dispatch(disactivateSnow());
+    }
+  }
 
 
   return (
@@ -85,11 +94,11 @@ const NavScrollExample = ()=> {
               <span className= {`nav-text ${subNavbar==='company'? 'active' : ''}`}  >Компания</span>
               </button>
           </Nav>
-{/* 
-          <Button variant="outline-light" className='snow-button'>
-            <img className='snowflake' src={myImage} alt="My Image" />
-            </Button> */}
-          
+
+          <Button onClick={onChangeSnow} variant='outline-dark' className='snow-button'>
+            <Snowflake width={30} height={30} color="rgb(15, 148, 201)"/>
+          </Button>
+
           <Form className="d-flex">
             <Form.Control
               type="search"

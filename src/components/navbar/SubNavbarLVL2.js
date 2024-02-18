@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { 
@@ -44,10 +47,14 @@ const SubNavbarLVL2 = ()=> {
                     {imgArr.map((el,i) => {
                         return(
                             <Nav.Link
+                                data-tooltip-id={`tooltip-${i}`}
+                                data-tooltip-content={el.alt}
+                                data-tooltip-place="bottom"
                                 key = {i}
                                 style={{color: 'white', fontWeight:500, marginRight:5}} 
                                 href={el.link}>
                                     <img className={`subnavbar-lvl2-img ${el.mini=='true'? 'mini' : ''}`} src={el.src} />
+                                    <Tooltip style={{fontSize: 14}} id={`tooltip-${i}`} />
                             </Nav.Link>
                         )
                     })}
