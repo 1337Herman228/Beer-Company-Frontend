@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 import drinksJSON from './drinks.json'
-import companyJSON from './/company.json'
+import companyJSON from './company.json'
 
 const drinksArray = drinksJSON.drinks;
 const companyArray = companyJSON.company;

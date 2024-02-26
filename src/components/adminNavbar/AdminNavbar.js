@@ -1,6 +1,6 @@
-import './Navbar.css';
-import { ReactComponent as Logo } from './logo.svg'
-import SubNavbar from './SubNavbar';
+import '../navbar/Navbar.css';
+import { ReactComponent as Logo } from '../navbar/logo.svg'
+import AdminSubNavbar from './AdminSubNavbar';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,7 +25,7 @@ import gsap from "gsap";
 
 import Snowflake from '../snow/snowflake';
 
-const NavScrollExample = ()=> {
+const AdminNavbar = ()=> {
 
   const subNavbarRef = useRef(null);
 
@@ -81,16 +81,16 @@ const NavScrollExample = ()=> {
 
             <button
                 className="dropdown"
-                onClick={() => handleClick('drinks')}
+                onClick={() => handleClick('accounts')}
                 >
-              <span className= {`nav-text ${subNavbar==='drinks'? 'active' : ''}`}  >Напитки</span>
+              <span className= {`nav-text ${subNavbar==='accounts'? 'active' : ''}`}  >Учётные записи</span>
               </button>
 
               <button
                 className="dropdown"
-                onClick={() => handleClick('company')}
+                onClick={() => handleClick('products')}
                 >
-              <span className= {`nav-text ${subNavbar==='company'? 'active' : ''}`}  >Компания</span>
+              <span className= {`nav-text ${subNavbar==='products'? 'active' : ''}`}  >Товары</span>
               </button>
           </Nav>
 
@@ -111,7 +111,7 @@ const NavScrollExample = ()=> {
       </Container>
 
         <div ref = {subNavbarRef}>
-          {subNavbar!=='none' ? <SubNavbar /> : null}
+          {subNavbar!=='none' ? <AdminSubNavbar /> : null}
         </div>
 
     </Navbar>
@@ -121,4 +121,4 @@ const NavScrollExample = ()=> {
   );
 }
 
-export default NavScrollExample;
+export default AdminNavbar;

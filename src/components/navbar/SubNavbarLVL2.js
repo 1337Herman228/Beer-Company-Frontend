@@ -14,7 +14,7 @@ import {
     showSubNavbar,
     hideSubNavbar,
     fullTitlesAndLinks,
-  } from '../../slices/basicSlice';
+  } from '../../slices/navbarSlice';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 

@@ -15,7 +15,7 @@ import {
     showSubNavbar,
     showSubNavbarLVL2,
     fullTitlesAndLinks,
-  } from '../../slices/basicSlice';
+  } from '../../slices/navbarSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 
